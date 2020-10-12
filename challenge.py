@@ -1,5 +1,4 @@
 import pyRofex
-from credentials import *
 import time
 import sys
 import getopt
@@ -67,14 +66,16 @@ class Challenge:
 
         except:
             # Excepción al no devolver datos
-            print("No hay cotización aún")    
+            print("No hay cotización aún")
+            exit()    
 
     def error_handler(self, message):
         print("Mensaje de error recibido: {0}".format(message['description']))
+        exit()
         
     def exception_handler(self, e):
         print("Ocurrió una excepción: {0}".format(e.message))
-        
+        exit()
 
     def _send_order(self, side, px, size):
             order = pyRofex.send_order(
@@ -100,9 +101,11 @@ if __name__ == "__main__":
         REMARKETS_USER = oplist[0][1]
         REMARKETS_PASS = oplist[1][1]
         REMARKETS_ACCOUNT = oplist[2][1]
-    except IndexError or getopt.GetoptError as error:
-        print("""Error al ingresar las credenciales adecuadamente, el formato debe ser:
-                 challenge.py instrumento -u REMARKETS_USER -p REMARKETS_PASS -a REMARKETS_ACCOUNT""")
-        print(error)
+
+    except IndexError or getopt.GetoptError:
+        print("""\nError al ingresar las credenciales adecuadamente, el formato debe ser:
+challenge.py instrumento -u REMARKETS_USER -p REMARKETS_PASS -a REMARKETS_ACCOUNT\n""")
+    
+        exit()
         
     Challenge(instrument, REMARKETS_USER, REMARKETS_PASS, REMARKETS_ACCOUNT)

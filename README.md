@@ -1,12 +1,13 @@
 # challenge
-## Bot con pyRofex
+Aplicación para operar en Matba-ROFEX
 
 Para iniciar challenge.py, pasar el instrumento y credenciales con el siguiente formato desde la terminal:
 
-**challenge.py instrumento -u REMARKETS_USER -p REMARKETS_PASS -a REMARKETS_ACCOUNT**
+```bash
+challenge.py instrumento -u REMARKETS_USER -p REMARKETS_PASS -a REMARKETS_ACCOUNT
+```
 
-
-###### Qué realiza la aplicación:
+## Qué realiza la aplicación:
 
 - Se comunica a un mercado simulado (Remarkets) mediante la API WebSocket de Matba-ROFEX, e
 inicia sesión con credenciales pasadas por parámetro.
