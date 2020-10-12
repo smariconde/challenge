@@ -1,7 +1,8 @@
 import pyRofex
 from credentials import *
 import time
-
+import sys
+import getopt
 
 class Challenge:
     def __init__(self, instrument, user, password, account):
@@ -88,8 +89,20 @@ class Challenge:
             print("Ingresando orden a: ${:,.2f}".format(px).replace(",", "@").replace(".", ",").replace("@", "."))
 
 if __name__ == "__main__":
-    Challenge("DOOct20", REMARKETS_USER, REMARKETS_PASS, REMARKETS_ACCOUNT)
-    
-    
+       
+    try:
+        commandlineArgs = sys.argv[2:]
+        options = "u:p:a:"
+        long_options = ["user=", "password=", "account="]
+        oplist, args = getopt.getopt(commandlineArgs, options, long_options)
 
-
+        instrument = sys.argv[1]
+        REMARKETS_USER = oplist[0][1]
+        REMARKETS_PASS = oplist[1][1]
+        REMARKETS_ACCOUNT = oplist[2][1]
+    except IndexError or getopt.GetoptError as error:
+        print("""Error al ingresar las credenciales adecuadamente, el formato debe ser:
+                 challenge.py instrumento -u REMARKETS_USER -p REMARKETS_PASS -a REMARKETS_ACCOUNT""")
+        print(error)
+        
+    Challenge(instrument, REMARKETS_USER, REMARKETS_PASS, REMARKETS_ACCOUNT)

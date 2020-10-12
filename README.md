@@ -1,16 +1,12 @@
 # challenge
- Bot con pyRofex
+## Bot con pyRofex
 
-Crear un archivo credentials.py con los siguientes datos
+Para iniciar challenge.py, pasar el instrumento y credenciales con el siguiente formato desde la terminal:
 
-REMARKETS_USER = 'Usuario Remarkets'
-
-REMARKETS_PASS = 'Password Remarkets'
-
-REMARKETS_ACCOUNT = 'Cuenta Remarkets'
+**challenge.py instrumento -u REMARKETS_USER -p REMARKETS_PASS -a REMARKETS_ACCOUNT**
 
 
-Que realiza la aplicación:
+###### Qué realiza la aplicación:
 
 - Se comunica a un mercado simulado (Remarkets) mediante la API WebSocket de Matba-ROFEX, e
 inicia sesión con credenciales pasadas por parámetro.
